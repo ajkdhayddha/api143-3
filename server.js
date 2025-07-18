@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("✅ API Roblox Script IA rodando!");
+  res.send("✅ API Roblox Script AI está funcionando!");
 });
 
 app.post("/api/script", async (req, res) => {
@@ -31,7 +31,7 @@ app.post("/api/script", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "Você é um gerador de scripts para Roblox em Lua. Sempre responda apenas com o código do script.",
+          content: "Você é um gerador de scripts Lua para Roblox. Sempre responda apenas com código.",
         },
         {
           role: "user",
@@ -42,10 +42,16 @@ app.post("/api/script", async (req, res) => {
       max_tokens: 1000,
     });
 
-    const resposta = completion.choices[0]?.message?.content;
-    res.json({ script: resposta });
-  } catch (err) {
-    console.error("Erro na API OpenAI:", err);
+    const script = completion.choices?.[0]?.message?.content;
+
+    if (!script) {
+      console.error("Resposta da OpenAI está vazia:", completion);
+      return res.status(500).json({ error: "Resposta da OpenAI vazia." });
+    }
+
+    res.json({ script });
+  } catch (error) {
+    console.error("Erro na OpenAI:", error);
     res.status(500).json({ error: "Erro ao gerar script." });
   }
 });
