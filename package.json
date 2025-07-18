@@ -1,25 +1,16 @@
 {
-  "name": "roblox-script-api",
+  "name": "roblox-script-backend",
   "version": "1.0.0",
-  "description": "API de geração de scripts Roblox usando OpenAI",
+  "description": "Backend para gerar scripts de Roblox com OpenAI",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "openai": "^4.30.0"
-  },
-  "keywords": [
-    "roblox",
-    "ai",
-    "openai",
-    "api",
-    "scripts"
-  ],
-  "author": "Seu Nome",
-  "license": "MIT"
+    "openai": "^4.24.0",
+    "body-parser": "^1.20.2"
+  }
 }
