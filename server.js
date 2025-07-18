@@ -52,7 +52,7 @@ app.post("/api/script", async (req, res) => {
     res.json({ script });
   } catch (error) {
     console.error("Erro na OpenAI:", error);
-    res.status(500).json({ error: "Erro ao gerar script." });
+    res.status(500).json({ error: "Erro ao gerar script.", details: error.message });
   }
 });
 
